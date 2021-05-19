@@ -1,8 +1,11 @@
-var data = new Date();
-console.log(data);
+const inputs = document.querySelectorAll(".controls input");
 
-setTimeout(intr, 9000);
+function handleUpdate() {
+  const suffix = this.dataset.sizing || "";
+  console.log(this.value);
+  document.documentElement.style.setProperty(`--${this.name}`, this.value + suffix);
 
-function intr(){
-  console.log("--->"+data.getSeconds());
 }
+
+inputs.forEach(input => input.addEventListener('change', handleUpdate));
+inputs.forEach(input => input.addEventListener('mousemove', handleUpdate));
